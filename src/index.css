@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
+body {
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.bg-tavern-texture {
+  background-image: url('https://www.transparenttextures.com/patterns/old-map.png');
+}
+
+.shadow-glow {
+  box-shadow: 0 0 15px 5px rgba(245, 158, 11, 0.6);
+}
