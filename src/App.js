@@ -30,14 +30,23 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
-  // Load favorites from localStorage
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    if (saved){
-      setFavorites(JSON.parse(saved));
-    }else{
-      localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
+    const saved = localStorage.getItem('favoriteRecipes');
+    if (saved) {
+      try {
+        setFavorites(JSON.parse(saved));
+      } catch (e) {
+        console.error("Failed to parse favorites:", e);
+        localStorage.removeItem('favoriteRecipes');
+      }
     }
+  }, []); // Empty dependency array to run only once on mount
+
+  // Separate useEffect to save when favorites change
+  useEffect(() => {
+    setTimeout(() => {
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
+    }, 500)
   }, [favorites]);
 
 
