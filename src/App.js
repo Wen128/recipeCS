@@ -32,11 +32,11 @@ function App() {
 
   // Load favorites from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem('favoriteRecipes');
+    const saved = JSON.parse(localStorage.getItem('favoriteRecipes'));
     if (saved){
       setFavorites(JSON.parse(saved));
     }else{
-      localStorage.setItem('favoriteRecipes', favorites);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
     }
   }, [favorites]);
 
@@ -59,11 +59,11 @@ function App() {
   const toggleFavorite = (recipe) => {
     if (favorites.some(fav => fav.title === recipe.title)) {
       setFavorites(favorites.filter(fav => fav.title !== recipe.title));
-      localStorage.setItem('favoriteRecipes', favorites);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
 
     } else {
       setFavorites([...favorites, recipe]);
-      localStorage.setItem('favoriteRecipes', favorites);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
 
     }
   };
