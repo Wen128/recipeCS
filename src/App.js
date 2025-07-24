@@ -75,7 +75,7 @@ function App() {
     console.log("seleced ingre", selectedIngredients);
     
     try {
-      const response = await fetch('http://localhost:5000/api/generate-recipes', {
+      const response = await fetch('https://recipebackend-oo1a.onrender.com/api/generate-recipes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
