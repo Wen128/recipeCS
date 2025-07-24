@@ -38,7 +38,7 @@ function App() {
     }else{
       localStorage.setItem('favoriteRecipes', favorites);
     }
-  }, []);
+  }, [favorites]);
 
 
   const toggleIngredient = (ingredient) => {
